@@ -20,13 +20,13 @@ public class PrintSpiral {
         while (totalElements<r*c) {
             //topRow=leftCol to rightCol
             for (int j = leftCol; j <= rightCol; j++) {
-                System.out.println(matrix[topRow][j]);
+                System.out.println(matrix[topRow][j] + " ");
                 totalElements++;
             }
             topRow++;
             //rightCol=topRow to bottomRow
             for (int i = topRow; i <= bottomRow; i++) {
-                System.out.println(matrix[i][rightCol]);
+                System.out.println(matrix[i][rightCol] + " ");
                 totalElements++;
             }
             rightCol--;
