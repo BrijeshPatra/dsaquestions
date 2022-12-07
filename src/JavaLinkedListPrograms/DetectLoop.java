@@ -18,17 +18,23 @@ public class DetectLoop {
         new_node.next=head;
         head=new_node;
     }
-    static boolean detectLoop(Node h){
-       HashSet<Node>s=new HashSet<Node>();
-       while(h!=null){
-           if(s.contains(h))
-               return true;
-
-               s.add(h);
-               h=h.next;
-           }
+    static boolean detectLoop(Node head) {
+       if(head==null){
            return false;
        }
+       Node fast=head.next;
+       Node slow=head;
+
+       while(fast!=null && fast.next!=null){
+           fast=fast.next.next;
+           slow=slow.next;
+
+           if(fast==slow){
+               return true;
+           }
+       }
+        return false;
+    }
 
     public static void main(String[] args) {
         DetectLoop dl=new DetectLoop();

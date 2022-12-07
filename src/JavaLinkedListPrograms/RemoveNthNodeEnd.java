@@ -1,6 +1,6 @@
 package JavaLinkedListPrograms;
 
-public class RemoveNthNode {
+public class RemoveNthNodeEnd {
 
     static Node head;
     class Node{
@@ -13,7 +13,7 @@ public class RemoveNthNode {
         }
     }
 
-    public Node removeNthNode(Node head,int n){
+    public Node removeNthNodeEnd(Node head,int n){
         if(head.next==null){
             return null;
         }

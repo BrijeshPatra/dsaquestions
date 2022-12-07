@@ -1,6 +1,10 @@
 package JavaLinkedListPrograms;
 /*
 Check linked list is palindrome or not
+Approach->1)Reverse the linked list
+          2)Find the middle element
+          3)Reverse the second half of Linked list
+          4)Check first half and second half
  */
 public class Palindrome {
     static class Node{
@@ -23,26 +27,32 @@ public class Palindrome {
         }
         return prev;
     }
-    public Node getMid(Node head){
-        if(head == null || head.next == null)return head;
-        Node curr=head;
-        Node mid=head;
+    public Node findMiddle(Node head){
+        Node fast=head;
+        Node slow=head;
 
-        while(curr.next!=null&&curr.next.next!=null){
-            curr=curr.next.next;
-            mid=mid.next;
+        while(fast.next==null && fast.next.next==null){
+            fast=fast.next.next;
+            slow=slow.next;
         }
-        return mid;
+        return slow;
     }
-    public boolean isPalindrome(Node head){
-        Node mid=getMid(head);
-        Node halfList=reverse(mid.next);
-        Node curr=head;
 
-        while(halfList!=null){
-            if(curr.data!=halfList.data)return false;
-            curr=curr.next;
-            halfList=halfList.next;
+
+    public boolean isPalindrome(Node head) {
+
+        if(head==null || head.next==null){
+            return true;
+        }
+        Node middle=findMiddle(head);
+        Node secondHalfStart=reverse(middle.next);
+        Node firstHalfStart=head;
+        while(secondHalfStart!=null){
+            if(firstHalfStart.data!= secondHalfStart.data){
+                return false;
+            }
+            firstHalfStart=firstHalfStart.next;
+            secondHalfStart=secondHalfStart.next;
         }
         return true;
     }
